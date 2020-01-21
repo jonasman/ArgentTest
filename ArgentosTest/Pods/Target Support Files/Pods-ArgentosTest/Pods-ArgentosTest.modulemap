@@ -1,0 +1,6 @@
+framework module Pods_ArgentosTest {
+  umbrella header "Pods-ArgentosTest-umbrella.h"
+
+  export *
+  module * { export * }
+}
