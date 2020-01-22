@@ -1,24 +1,175 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Jvu-Vh-xml">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Wallet-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Wallet" id="BYZ-38-t0r" customClass="ViewController" customModule="ArgentosTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wallet Balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BKx-oQ-X3L">
+                                <rect key="frame" x="150.5" y="190" width="113" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZJd-tK-657">
+                                <rect key="frame" x="156.5" y="286.5" width="101" height="30"/>
+                                <state key="normal" title="Send 0.01 ETH"/>
+                                <connections>
+                                    <action selector="sendETH:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3eg-kk-wIA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="54w-hA-ov9">
+                                <rect key="frame" x="131" y="528" width="152" height="30"/>
+                                <state key="normal" title="View ERC20 Transfers"/>
+                                <connections>
+                                    <segue destination="AYA-Jd-Blf" kind="show" identifier="toTransfers" id="PZy-YG-ewc"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3.76 ETH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rxc-ID-efM">
+                                <rect key="frame" x="171.5" y="226" width="71" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="54w-hA-ov9" firstAttribute="top" secondItem="ZJd-tK-657" secondAttribute="bottom" constant="211.5" id="1Lt-Jr-H9h"/>
+                            <constraint firstItem="BKx-oQ-X3L" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2jh-yg-ub0"/>
+                            <constraint firstItem="54w-hA-ov9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3Bf-sq-b62"/>
+                            <constraint firstItem="ZJd-tK-657" firstAttribute="top" secondItem="rxc-ID-efM" secondAttribute="bottom" constant="40" id="4Px-4r-48X"/>
+                            <constraint firstItem="ZJd-tK-657" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TBA-x0-v4u"/>
+                            <constraint firstItem="rxc-ID-efM" firstAttribute="top" secondItem="BKx-oQ-X3L" secondAttribute="bottom" constant="15" id="df4-U5-I3P"/>
+                            <constraint firstItem="rxc-ID-efM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gWf-rp-3ZL"/>
+                            <constraint firstItem="BKx-oQ-X3L" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="102" id="w8K-GD-eSd"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Argent Wallet" id="f0R-an-UOe"/>
+                    <connections>
+                        <outlet property="balanceLabel" destination="rxc-ID-efM" id="qOQ-RV-iC7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1042.0289855072465" y="103.79464285714285"/>
+        </scene>
+        <!--ERC20 Transfers-->
+        <scene sceneID="PtX-Yf-CrQ">
+            <objects>
+                <tableViewController title="ERC20 Transfers" id="AYA-Jd-Blf" customClass="TransactionsViewController" customModule="ArgentosTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="3SX-EE-c7C">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="100" id="Z5j-ov-0U8" customClass="TransactionCell" customModule="ArgentosTest" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Z5j-ov-0U8" id="Mnh-0k-PZG">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="a09-vz-5Nk">
+                                            <rect key="frame" x="77" y="10" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uqr-kr-inJ">
+                                            <rect key="frame" x="20" y="10" width="44" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Token:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zeB-PR-laS">
+                                            <rect key="frame" x="20" y="39.5" width="50.5" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FxF-eP-iil">
+                                            <rect key="frame" x="83.5" y="39.5" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OMn-H5-28g">
+                                            <rect key="frame" x="98" y="69" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vru-hI-xkP">
+                                            <rect key="frame" x="20" y="69" width="65" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="a09-vz-5Nk" secondAttribute="trailing" constant="20" id="3zr-J8-zrg"/>
+                                        <constraint firstItem="Uqr-kr-inJ" firstAttribute="leading" secondItem="Mnh-0k-PZG" secondAttribute="leading" constant="20" id="5wL-m0-FIZ"/>
+                                        <constraint firstItem="a09-vz-5Nk" firstAttribute="leading" secondItem="Uqr-kr-inJ" secondAttribute="trailing" constant="13" id="6ni-qG-qV4"/>
+                                        <constraint firstItem="zeB-PR-laS" firstAttribute="centerY" secondItem="Mnh-0k-PZG" secondAttribute="centerY" id="Cgv-6W-mIB"/>
+                                        <constraint firstAttribute="bottom" secondItem="vru-hI-xkP" secondAttribute="bottom" constant="10" id="DQs-nk-c1K"/>
+                                        <constraint firstItem="FxF-eP-iil" firstAttribute="leading" secondItem="zeB-PR-laS" secondAttribute="trailing" constant="13" id="KtZ-GI-udB"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="OMn-H5-28g" secondAttribute="trailing" constant="20" id="NrT-M5-o5n"/>
+                                        <constraint firstItem="OMn-H5-28g" firstAttribute="leading" secondItem="vru-hI-xkP" secondAttribute="trailing" constant="13" id="PUL-Kk-hAN"/>
+                                        <constraint firstItem="zeB-PR-laS" firstAttribute="leading" secondItem="Mnh-0k-PZG" secondAttribute="leading" constant="20" id="SGf-iZ-BVd"/>
+                                        <constraint firstItem="Uqr-kr-inJ" firstAttribute="top" secondItem="Mnh-0k-PZG" secondAttribute="top" constant="10" id="ZOq-AN-2wx"/>
+                                        <constraint firstItem="a09-vz-5Nk" firstAttribute="top" secondItem="Mnh-0k-PZG" secondAttribute="top" constant="10" id="bLx-f0-UXA"/>
+                                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="FxF-eP-iil" secondAttribute="trailing" constant="20" id="fpI-VR-977"/>
+                                        <constraint firstItem="FxF-eP-iil" firstAttribute="centerY" secondItem="Mnh-0k-PZG" secondAttribute="centerY" id="iyr-Lh-GL6"/>
+                                        <constraint firstItem="vru-hI-xkP" firstAttribute="leading" secondItem="Mnh-0k-PZG" secondAttribute="leading" constant="20" id="w20-2v-POJ"/>
+                                        <constraint firstItem="OMn-H5-28g" firstAttribute="bottom" secondItem="Mnh-0k-PZG" secondAttribute="bottom" constant="-10" id="yZx-0e-HPU"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="amountLabel" destination="OMn-H5-28g" id="UzO-kg-eE7"/>
+                                    <outlet property="fromLabel" destination="a09-vz-5Nk" id="GoE-FQ-n5N"/>
+                                    <outlet property="tokenLabel" destination="FxF-eP-iil" id="0uB-nq-Pr6"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="AYA-Jd-Blf" id="G59-GD-R5U"/>
+                            <outlet property="delegate" destination="AYA-Jd-Blf" id="NyO-fm-zbv"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="ERC20 Transfers" id="IAS-0y-W7L"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5DF-if-0v2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1935" y="104"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="a4L-Q3-7sI">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Jvu-Vh-xml" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BYX-VO-eWv">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="gUx-N9-IfU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XGk-YR-MiG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="103.79464285714285"/>
         </scene>
     </scenes>
 </document>

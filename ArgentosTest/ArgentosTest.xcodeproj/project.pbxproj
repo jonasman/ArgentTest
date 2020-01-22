@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,16 @@
 		1A2F4EC423D7621D007C81EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A2F4EC223D7621D007C81EC /* Main.storyboard */; };
 		1A2F4EC623D76228007C81EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A2F4EC523D76228007C81EC /* Assets.xcassets */; };
 		1A2F4EC923D76228007C81EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A2F4EC723D76228007C81EC /* LaunchScreen.storyboard */; };
+		1A7A1B2523D768A40086338C /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7A1B2423D768A40086338C /* ViewState.swift */; };
+		1A7A1B2723D76A870086338C /* EthereumService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7A1B2623D76A870086338C /* EthereumService.swift */; };
+		1A7A1B2923D76B2F0086338C /* SecureEthereumKeyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7A1B2823D76B2F0086338C /* SecureEthereumKeyStorage.swift */; };
+		1A7A1B2D23D77B210086338C /* EthereumClient+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7A1B2C23D77B210086338C /* EthereumClient+Combine.swift */; };
+		1A7A1B2F23D77E740086338C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1A7A1B2E23D77E740086338C /* README.md */; };
+		1A7A1B3123D7AAED0086338C /* BigInt+Ethereum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7A1B3023D7AAED0086338C /* BigInt+Ethereum.swift */; };
+		1A7A1B3523D8B8550086338C /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7A1B3423D8B8550086338C /* TransactionsViewController.swift */; };
+		1A7A1B3723D8B9600086338C /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7A1B3623D8B9600086338C /* TransactionCell.swift */; };
+		1A7A1B3923D8BB0E0086338C /* TransactionViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7A1B3823D8BB0E0086338C /* TransactionViewState.swift */; };
+		1A7A1B3D23D8D0E50086338C /* TransferManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7A1B3C23D8D0E50086338C /* TransferManager.swift */; };
 		6CEE5D5E8483ECAE80DDF3C0 /* Pods_ArgentosTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC1BC400333EF49BAF17A960 /* Pods_ArgentosTest.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +37,17 @@
 		1A2F4EC823D76228007C81EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1A2F4ECA23D76228007C81EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A2F4ED023D76586007C81EC /* Questions.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Questions.rtf; sourceTree = "<group>"; };
+		1A7A1B2423D768A40086338C /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
+		1A7A1B2623D76A870086338C /* EthereumService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthereumService.swift; sourceTree = "<group>"; };
+		1A7A1B2823D76B2F0086338C /* SecureEthereumKeyStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureEthereumKeyStorage.swift; sourceTree = "<group>"; };
+		1A7A1B2B23D76D230086338C /* ExerciseData.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = ExerciseData.rtf; sourceTree = "<group>"; };
+		1A7A1B2C23D77B210086338C /* EthereumClient+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EthereumClient+Combine.swift"; sourceTree = "<group>"; };
+		1A7A1B2E23D77E740086338C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
+		1A7A1B3023D7AAED0086338C /* BigInt+Ethereum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BigInt+Ethereum.swift"; sourceTree = "<group>"; };
+		1A7A1B3423D8B8550086338C /* TransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewController.swift; sourceTree = "<group>"; };
+		1A7A1B3623D8B9600086338C /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
+		1A7A1B3823D8BB0E0086338C /* TransactionViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewState.swift; sourceTree = "<group>"; };
+		1A7A1B3C23D8D0E50086338C /* TransferManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferManager.swift; sourceTree = "<group>"; };
 		40F971640403A45C0872B87E /* Pods-ArgentosTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArgentosTest.debug.xcconfig"; path = "Target Support Files/Pods-ArgentosTest/Pods-ArgentosTest.debug.xcconfig"; sourceTree = "<group>"; };
 		CC1BC400333EF49BAF17A960 /* Pods_ArgentosTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArgentosTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -64,16 +85,51 @@
 		1A2F4EBB23D7621D007C81EC /* ArgentosTest */ = {
 			isa = PBXGroup;
 			children = (
+				1A7A1B2E23D77E740086338C /* README.md */,
 				1A2F4ED023D76586007C81EC /* Questions.rtf */,
+				1A7A1B2B23D76D230086338C /* ExerciseData.rtf */,
 				1A2F4EBC23D7621D007C81EC /* AppDelegate.swift */,
 				1A2F4EBE23D7621D007C81EC /* SceneDelegate.swift */,
-				1A2F4EC023D7621D007C81EC /* ViewController.swift */,
+				1A7A1B3B23D8C28A0086338C /* MainViewController */,
+				1A7A1B3A23D8C27F0086338C /* TransactionsViewController */,
 				1A2F4EC223D7621D007C81EC /* Main.storyboard */,
 				1A2F4EC523D76228007C81EC /* Assets.xcassets */,
 				1A2F4EC723D76228007C81EC /* LaunchScreen.storyboard */,
+				1A7A1B2A23D76BC70086338C /* EthereumService */,
 				1A2F4ECA23D76228007C81EC /* Info.plist */,
 			);
 			path = ArgentosTest;
+			sourceTree = "<group>";
+		};
+		1A7A1B2A23D76BC70086338C /* EthereumService */ = {
+			isa = PBXGroup;
+			children = (
+				1A7A1B2623D76A870086338C /* EthereumService.swift */,
+				1A7A1B3C23D8D0E50086338C /* TransferManager.swift */,
+				1A7A1B2823D76B2F0086338C /* SecureEthereumKeyStorage.swift */,
+				1A7A1B2C23D77B210086338C /* EthereumClient+Combine.swift */,
+				1A7A1B3023D7AAED0086338C /* BigInt+Ethereum.swift */,
+			);
+			path = EthereumService;
+			sourceTree = "<group>";
+		};
+		1A7A1B3A23D8C27F0086338C /* TransactionsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1A7A1B3423D8B8550086338C /* TransactionsViewController.swift */,
+				1A7A1B3623D8B9600086338C /* TransactionCell.swift */,
+				1A7A1B3823D8BB0E0086338C /* TransactionViewState.swift */,
+			);
+			path = TransactionsViewController;
+			sourceTree = "<group>";
+		};
+		1A7A1B3B23D8C28A0086338C /* MainViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1A2F4EC023D7621D007C81EC /* ViewController.swift */,
+				1A7A1B2423D768A40086338C /* ViewState.swift */,
+			);
+			path = MainViewController;
 			sourceTree = "<group>";
 		};
 		57F9FF1711302502830538FF /* Pods */ = {
@@ -82,7 +138,6 @@
 				40F971640403A45C0872B87E /* Pods-ArgentosTest.debug.xcconfig */,
 				16CF3A29F186EA5D16738E10 /* Pods-ArgentosTest.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -156,6 +211,7 @@
 			files = (
 				1A2F4EC923D76228007C81EC /* LaunchScreen.storyboard in Resources */,
 				1A2F4EC623D76228007C81EC /* Assets.xcassets in Resources */,
+				1A7A1B2F23D77E740086338C /* README.md in Resources */,
 				1A2F4EC423D7621D007C81EC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -211,7 +267,16 @@
 			files = (
 				1A2F4EC123D7621D007C81EC /* ViewController.swift in Sources */,
 				1A2F4EBD23D7621D007C81EC /* AppDelegate.swift in Sources */,
+				1A7A1B3523D8B8550086338C /* TransactionsViewController.swift in Sources */,
+				1A7A1B2D23D77B210086338C /* EthereumClient+Combine.swift in Sources */,
+				1A7A1B2723D76A870086338C /* EthereumService.swift in Sources */,
 				1A2F4EBF23D7621D007C81EC /* SceneDelegate.swift in Sources */,
+				1A7A1B2523D768A40086338C /* ViewState.swift in Sources */,
+				1A7A1B2923D76B2F0086338C /* SecureEthereumKeyStorage.swift in Sources */,
+				1A7A1B3D23D8D0E50086338C /* TransferManager.swift in Sources */,
+				1A7A1B3723D8B9600086338C /* TransactionCell.swift in Sources */,
+				1A7A1B3923D8BB0E0086338C /* TransactionViewState.swift in Sources */,
+				1A7A1B3123D7AAED0086338C /* BigInt+Ethereum.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
