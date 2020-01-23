@@ -16,3 +16,4 @@ Run the project in the simulator
 `SecureEthereumKeyStorage` -  A class to manage the privatekey securely with Apple's keychain
 `EthereumService`- A class to manage and abstract the communication with the Etherum library
 `TransferManager`- A struct to hold the TransferManager Contract information and functions
+`EthereumValue` - A class to format Ethereum numbers

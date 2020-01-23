@@ -17,7 +17,7 @@
 		1A7A1B2723D76A870086338C /* EthereumService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7A1B2623D76A870086338C /* EthereumService.swift */; };
 		1A7A1B2923D76B2F0086338C /* SecureEthereumKeyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7A1B2823D76B2F0086338C /* SecureEthereumKeyStorage.swift */; };
 		1A7A1B2F23D77E740086338C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1A7A1B2E23D77E740086338C /* README.md */; };
-		1A7A1B3123D7AAED0086338C /* BigInt+Ethereum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7A1B3023D7AAED0086338C /* BigInt+Ethereum.swift */; };
+		1A7A1B3123D7AAED0086338C /* EthereumValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7A1B3023D7AAED0086338C /* EthereumValue.swift */; };
 		1A7A1B3523D8B8550086338C /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7A1B3423D8B8550086338C /* TransactionsViewController.swift */; };
 		1A7A1B3723D8B9600086338C /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7A1B3623D8B9600086338C /* TransactionCell.swift */; };
 		1A7A1B3923D8BB0E0086338C /* TransactionViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7A1B3823D8BB0E0086338C /* TransactionViewState.swift */; };
@@ -41,7 +41,7 @@
 		1A7A1B2823D76B2F0086338C /* SecureEthereumKeyStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureEthereumKeyStorage.swift; sourceTree = "<group>"; };
 		1A7A1B2B23D76D230086338C /* ExerciseData.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = ExerciseData.rtf; sourceTree = "<group>"; };
 		1A7A1B2E23D77E740086338C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
-		1A7A1B3023D7AAED0086338C /* BigInt+Ethereum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BigInt+Ethereum.swift"; sourceTree = "<group>"; };
+		1A7A1B3023D7AAED0086338C /* EthereumValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthereumValue.swift; sourceTree = "<group>"; };
 		1A7A1B3423D8B8550086338C /* TransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewController.swift; sourceTree = "<group>"; };
 		1A7A1B3623D8B9600086338C /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
 		1A7A1B3823D8BB0E0086338C /* TransactionViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewState.swift; sourceTree = "<group>"; };
@@ -105,7 +105,7 @@
 				1A7A1B2623D76A870086338C /* EthereumService.swift */,
 				1A7A1B3C23D8D0E50086338C /* TransferManager.swift */,
 				1A7A1B2823D76B2F0086338C /* SecureEthereumKeyStorage.swift */,
-				1A7A1B3023D7AAED0086338C /* BigInt+Ethereum.swift */,
+				1A7A1B3023D7AAED0086338C /* EthereumValue.swift */,
 			);
 			path = EthereumService;
 			sourceTree = "<group>";
@@ -272,7 +272,7 @@
 				1A7A1B3D23D8D0E50086338C /* TransferManager.swift in Sources */,
 				1A7A1B3723D8B9600086338C /* TransactionCell.swift in Sources */,
 				1A7A1B3923D8BB0E0086338C /* TransactionViewState.swift in Sources */,
-				1A7A1B3123D7AAED0086338C /* BigInt+Ethereum.swift in Sources */,
+				1A7A1B3123D7AAED0086338C /* EthereumValue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
