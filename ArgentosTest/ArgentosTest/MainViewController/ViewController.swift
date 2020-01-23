@@ -8,7 +8,7 @@
 
 import UIKit
 import BigInt
-import Combine
+import web3
 
 class ViewController: UIViewController {
 
@@ -17,8 +17,7 @@ class ViewController: UIViewController {
     var ethereumService: EthereumService?
     var state = ViewState()
     
-    
-    
+
     //MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,12 +43,14 @@ class ViewController: UIViewController {
 
     func updateState() {
         
+        // For a real app this must come from a storage of our own wallet address.
         let walletAddress = "0x70ABd7F0c9Bdc109b579180B272525880Fb7E0cB"
         
         ethereumService?.getWalletBalance(walletAddress: walletAddress) {
             [weak self]  (result: Result<BigUInt, EthereumServiceError>) in
             
             switch result {
+                
             case .success(let balance):
                 DispatchQueue.main.async {
                     self?.state.updateBalance(ETHBalance: balance)
@@ -59,17 +60,23 @@ class ViewController: UIViewController {
                 // TODO: show the error to the user
                 print(error)
                 break
+                
             }
-            
         }
-
-
     }
 
     @IBAction func sendETH(_ sender: Any) {
-        ethereumService?.sendETH() {
-        [weak self]  (result: Result<Void, EthereumServiceError>) in
         
+        // For a real app this must come from a storage of our own wallet address.
+        let walletAddress = EthereumAddress("0x70ABd7F0c9Bdc109b579180B272525880Fb7E0cB")
+        // For a real app the address must be picked by the user via QR code, textbox or some other input method
+        let toAddress = EthereumAddress.zero
+        // For a real app the amount must be coming from a textbox and probably in ETH and be converted to WEI
+        let amountWEI = BigUInt("10000000000000000")
+        
+        ethereumService?.sendETH(walletAddress: walletAddress, toAddress: toAddress, WEIamount: amountWEI) {
+            (result: Result<Void, EthereumServiceError>) in
+            print("Sent")
         }
         
     }

@@ -26,43 +26,44 @@ enum EthereumServiceError: Error {
 
 class EthereumService {
     
-    let keyStorage: EthereumKeyLocalStorage //TODO: replace with SecureEthereumKeyStorage
+    enum InfuraURL: String {
+        case ropsten = "https://ropsten.infura.io/v3/735489d9f846491faae7a31e1862d24b"
+    }
+    
+    let keyStorage: SecureEthereumKeyStorage
     var account: EthereumAccount? = nil
     let client: EthereumClient
     
     init() throws {
         
-        keyStorage = EthereumKeyLocalStorage()
-        guard let privateKey = "0xec983791a21bea916170ee0aead71ab95c13280656e93ea4124c447bbd9a24a2".web3.hexData else {
-            throw EthereumServiceError.web3FailedToConvertPrivateKey
-        }
+        keyStorage = SecureEthereumKeyStorage()
 
         do {
-            // Lets convert EthereumKeyStorage errors into EthereumService errors for isolation
-            try keyStorage.storePrivateKey(key: privateKey)
-        } catch  EthereumKeyStorageError.notFound {
-            throw EthereumServiceError.keyStoreError
-        } catch EthereumKeyStorageError.failedToSave {
-            throw EthereumServiceError.keyStoreError
-        } catch EthereumKeyStorageError.failedToLoad {
-            throw EthereumServiceError.keyStoreError
+            _ = try keyStorage.loadPrivateKey()   // test that we have the key stored
+        } catch {
+            
+            do {
+                // The private key should never be stored in code.
+                // The private key would eventually be generated or loaded by a user and must be stored securely. A good way to do it is to store it on the keychain
+                let privateKey = "0xec983791a21bea916170ee0aead71ab95c13280656e93ea4124c447bbd9a24a2".web3.hexData! // bad
+                try keyStorage.storePrivateKey(key: privateKey)
+            } catch {
+                // Lets convert EthereumKeyStorage errors into EthereumService errors for isolation
+                throw EthereumServiceError.keyStoreError
+            }
+
         }
         
         do {
-            
-            // Lets convert EthereumAccount errors into EthereumService errors for isolation
             account = try EthereumAccount(keyStorage: keyStorage)
-            print(account?.address)
+            print("Address: \(account?.address ?? "no address")")
             
-        } catch EthereumAccountError.createAccountError {
-            throw EthereumServiceError.createAccountError
-        } catch EthereumAccountError.loadAccountError {
-            throw EthereumServiceError.loadAccountError
-        } catch EthereumAccountError.signError {
+        } catch {
+            // Lets convert EthereumAccount errors into EthereumService errors for isolation
             throw EthereumServiceError.signError
         }
         
-        guard let clientUrl = URL(string: "https://ropsten.infura.io/v3/735489d9f846491faae7a31e1862d24b") else {
+        guard let clientUrl = URL(string: InfuraURL.ropsten.rawValue) else {
             throw EthereumServiceError.clientURLError
         }
         
@@ -71,6 +72,14 @@ class EthereumService {
     
     
     // MARK: - Get Wallet Balance
+    
+    /**
+    Gets the balance of a wallet
+    - parameters:
+        - walletAddress: Wallet address
+        - completionHandler: Completion handler
+    */
+    
     func getWalletBalance(walletAddress: String, completionHandler: @escaping (Result<BigUInt, EthereumServiceError>) -> ()){
             
         client.eth_getBalance(address: walletAddress, block: .Latest) { (error: EthereumClientError?, balance: BigUInt?) in
@@ -85,16 +94,20 @@ class EthereumService {
     }
     
     // MARK: - Sent ETH
-    func sendETH(completionHandler: @escaping (Result<Void, EthereumServiceError>) -> ()) {
+    /**
+    Sends ETH to an address
+    - parameters:
+        - walletAddress: Wallet address
+        - toAddress: The destination address
+        - WEIamount: The amount to send in WEI
+        - completionHandler: Completion handler
+    */
+    func sendETH(walletAddress: EthereumAddress, toAddress: EthereumAddress, WEIamount: BigUInt, completionHandler: @escaping (Result<Void, EthereumServiceError>) -> ()) {
         
-        let contractAddress = EthereumAddress("0xcdAd167a8A9EAd2DECEdA7c8cC908108b0Cc06D1")
-        let walletAddress = EthereumAddress("0x70ABd7F0c9Bdc109b579180B272525880Fb7E0cB")
+        let contractAddress = EthereumAddress(TransferManager.ContractAddress.ropsten.rawValue)
         let tokenAddress = EthereumAddress("0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE")
-        let toAddress = EthereumAddress.zero
-        let amountWEI = BigUInt("10000000000000000")
         
-        
-        let function = TransferManager.TransferToken(contract: contractAddress, wallet: walletAddress, token: tokenAddress, to: toAddress, amount: amountWEI, data: Data())
+        let function = TransferManager.TransferToken(contract: contractAddress, wallet: walletAddress, token: tokenAddress, to: toAddress, amount: WEIamount, data: Data())
         
         guard let transaction = try? function.transaction(),
             let account = account else {
@@ -104,37 +117,31 @@ class EthereumService {
 
         client.eth_sendRawTransaction(transaction, withAccount: account) {
             (error, txHash) in
-            print("TX Hash: \(txHash)")
+            print("TX Hash: \(txHash ?? " no hash")")
         }
-        
-        
-        
+
     }
     
     // MARK: - Get Wallet Transactions
-    func getLastTransactions(walletAddress: String, completionHandler: @escaping (Result<[ERC20Events.Transfer], EthereumServiceError>) -> ()) {
+    /**
+    Gets the last ERC20 transactions
+    - parameters:
+        - walletAddress: Wallet address
+        - completionHandler: Completion handler
+    */
+    func getLastERC20Transactions(walletAddress: String, completionHandler: @escaping (Result<[ERC20Events.Transfer], EthereumServiceError>) -> ()) {
         
         let address = EthereumAddress(walletAddress)
         
-        ERC20(client: client).transferEventsTo(recipient: address, fromBlock: .Earliest, toBlock: .Latest) { (error: Error?, events: [ERC20Events.Transfer]?) in
+        ERC20(client: client).transferEventsTo(recipient: address, fromBlock: .Earliest, toBlock: .Latest) {
+            (error: Error?, events: [ERC20Events.Transfer]?) in
+            
             if let events = events {
                 completionHandler(Result<[ERC20Events.Transfer], EthereumServiceError>.success(events))
             } else {
                 completionHandler(Result<[ERC20Events.Transfer], EthereumServiceError>.failure(EthereumServiceError.failedToGetLastTransactions))
             }
         }
-        /*
-        client.eth_getLogs(addresses: [walletAddress], orTopics: nil, fromBlock: .Earliest, toBlock: .Latest) {
-            (error: EthereumClientError?, log: [EthereumLog]?) in
-            
-            if let log = log {
-                completionHandler(Result<[EthereumLog], EthereumServiceError>.success(log))
-            } else {
-                completionHandler(Result<[EthereumLog], EthereumServiceError>.failure(EthereumServiceError.failedToGetLastTransactions))
-            }
-            
-            
-        }*/
         
     }
 }

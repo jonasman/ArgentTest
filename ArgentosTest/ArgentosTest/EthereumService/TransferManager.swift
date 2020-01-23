@@ -12,6 +12,10 @@ import BigInt
 
 struct TransferManager {
     
+    enum ContractAddress: String {
+       case ropsten = "0xcdAd167a8A9EAd2DECEdA7c8cC908108b0Cc06D1"
+    }
+    
      struct TransferToken: ABIFunction {
         public static let name = "transferToken"
         public let gasPrice: BigUInt? = BigUInt("12000000000")

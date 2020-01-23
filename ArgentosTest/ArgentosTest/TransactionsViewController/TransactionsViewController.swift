@@ -60,7 +60,7 @@ class TransactionsViewController: UITableViewController {
         
         let walletAddress = "0x70ABd7F0c9Bdc109b579180B272525880Fb7E0cB"
         
-        ethereumService?.getLastTransactions(walletAddress: walletAddress) {
+        ethereumService?.getLastERC20Transactions(walletAddress: walletAddress) {
             [weak self] (result: Result<[ERC20Events.Transfer], EthereumServiceError>) in
             
             switch result {

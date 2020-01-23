@@ -8,14 +8,26 @@
 
 import Foundation
 import web3
+import KeychainAccess
 
 class SecureEthereumKeyStorage: EthereumKeyStorageProtocol {
     
+    let keychain: Keychain
+    static let privateKey = "privateKey"
+    
+    init() {
+        keychain = Keychain(service: "ArgentWallet")
+    }
+    
     func storePrivateKey(key: Data) throws -> Void {
-        
+        keychain[data: SecureEthereumKeyStorage.privateKey] = key
     }
     
     func loadPrivateKey() throws -> Data {
-        return Data()
+        if let key = keychain[data: SecureEthereumKeyStorage.privateKey] {
+            return key
+        } else {
+            throw EthereumKeyStorageError.failedToLoad
+        }
     }
 }

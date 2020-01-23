@@ -8,4 +8,5 @@ target 'ArgentosTest' do
   # Pods for ArgentosTest
 
   pod 'web3.swift'
+  pod 'KeychainAccess'
 end
