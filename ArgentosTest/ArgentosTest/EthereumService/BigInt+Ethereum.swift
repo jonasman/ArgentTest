@@ -9,28 +9,35 @@
 import Foundation
 import BigInt
 
-extension BigUInt {
-    /*func toWei() -> String {
-        let mutiple = BigUInt(hex: "0xde0b6b3a7640000")!
-        let value = self.multiplied(by: mutiple)
-        return "\(value)"
-    }*/
-    func fromWei() -> String {
-        let eighteenDecimals = "0xde0b6b3a7640000"
-        let mutiple = BigUInt(hex: eighteenDecimals)!
-        let (quotient, remainder) = self.quotientAndRemainder(dividingBy: mutiple)
-        return "\(quotient)." + "\(remainder)".substring(to: 2)
+class EthereumValue {
+    var value: BigUInt
+    
+    init(value: BigUInt) {
+        self.value = value
+    }
+    
+    var wei: NSDecimalNumber {
+        return NSDecimalNumber(string: value.description)
+    }
+    
+    var gwei: NSDecimalNumber {
+        wei.multiplying(byPowerOf10: -9)
+    }
+    
+    var eth: NSDecimalNumber {
+        wei.multiplying(byPowerOf10: -18)
+    }
+    
+    var ethString: String {
+        return ("\(eth)")
+    }
+    
+    var ethStringFormatted: String? {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 2
+        formatter.roundingMode = .down
+        return formatter.string(from: eth)
     }
 }
 
-extension String {
-    func index(from: Int) -> Index {
-        return self.index(startIndex, offsetBy: from)
-    }
-    
-    func substring(to: Int) -> String {
-        let toIndex = index(from: to)
-        return String(self[..<toIndex])
-    }
-    
-}

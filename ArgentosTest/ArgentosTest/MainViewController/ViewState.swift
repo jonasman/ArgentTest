@@ -14,7 +14,8 @@ class ViewState {
     private(set) var balance: String = "0 ETH"
     
     func updateBalance(ETHBalance: BigUInt) {
-        balance = "\(ETHBalance.fromWei()) ETH"
+        let eth = EthereumValue(value: ETHBalance)
+        balance = "\(eth.ethStringFormatted ?? "0") ETH"
     }
 }
 

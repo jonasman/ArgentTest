@@ -15,21 +15,31 @@
 How long did you spend on this?\
 Reading the docs: around 30minutes\
 Coding:  5h first day\
-5h next day\
+4h second day\
+2h third day - writing docs and cleaning up\
 \
 What would you improve if you had more time?\
 \pard\pardeftab720\partightenfactor0
 
-\f1\fs32 \cf3 \cb4 \
+\f1\fs32 \cf3 \cb4 UI could have been updated.\
+The app could display the active transaction state and update the wallet balance.\
+The app could poll for updates for wallet balance and transactions or it could just ask a server to monitor the changes and receive push notifications. \
+The transaction list could have a token fetch to show the ERC20 name (token name)\
 \pard\pardeftab720\sl340\sa240\partightenfactor0
 
 \f0\fs24 \cf2 \cb1 \
 What would you like to highlight in the code?\
+SecureEthereumKeyStorage - uses Apple's keychain to securely store the private key\
+I made 2 enums to help select the test network ropsten and possibly add the mainnet\
 \
 How would you secure the private key on an iOS device?\
+Using the keychain apis seems reasonable.\
+I haven't explored this, but CryptoKit now provides a way to store private keys in the secure enclave, if it is possible to store Eth keys it might be useful \
 \
 How would you make the app update with new incoming ERC20 transfers?\
-\
+i can see 2 ways:\
+1) polling the network every 15 seconds or more\
+2) requesting a server to monitor transactions for a wallet and receive push notifications from that server\
 \
 Bugs in web3: \
 1) 
